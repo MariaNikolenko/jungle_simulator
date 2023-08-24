@@ -5,6 +5,8 @@ public class Bear {
     private int health = 100;
     private int energy = 100;
 
+    private final double energyGenerationCoefficient = 1.8;
+
     public void setHealth (int health){
         this.health = health;
     }
@@ -18,4 +20,11 @@ public class Bear {
     public int getEnergy(){
         return this.energy;
     }
+
+    public double getEnergyGenerationCoefficient() {
+        return this.energyGenerationCoefficient;
+    }
+
+
+
 }
