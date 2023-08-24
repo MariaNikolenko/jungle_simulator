@@ -51,8 +51,34 @@ public class EventSimulator {
         CheckConditions.checkEnParameters100(bear);
         bear.setEnergy(energy);
         CheckConditions.checkEnergy(bear);
-        System.out.println("Рытьё берлоги -15 энергии.");
+        System.out.println("Сон +40 энергии.");
     }
+    private void sleepEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        energy = energy + 40;
+        CheckConditions.checkEnParameters100(bear);
+        bear.setEnergy(energy);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Сон +40 энергии.");
+    }
+
+    //Поиск ягод -7 энергии, k*5 здоровья
+    private void searchBerriesEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        int heals = bear.getHealth();
+        energy = energy - 7;
+        CheckConditions.checkEnParameters0(bear);
+        heals = heals + (int) (bear.getEnergyGenerationCoefficient()*5);
+        CheckConditions.checkEnParameters100(bear);
+        bear.setEnergy(energy);
+        bear.setHealth(heals);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Поиск ягод -7 энергии, + k*5 здоровья.");
+    }
+
+    //Добыча мёда -14 энергии, k*10 здоровья
+    //Добыча рыбы -10 энергии, k*8 здоровья
+    //Охота на оленя -30 энергии, k*20 здоровья
 
 
 
