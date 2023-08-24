@@ -20,13 +20,38 @@ public class EventSimulator {
     public void startSimulation (){
 
     }
-    private void walking (Bear bear) {
+    private void walkingEvent (Bear bear) {
         int energy = bear.getEnergy();
         energy = energy - 6;
         CheckConditions.checkEnParameters0(bear);
         bear.setEnergy(energy);
         CheckConditions.checkEnergy(bear);
         System.out.println("Брождение по лесу -6 энергии.");
+    }
+    private void chaseEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        energy = energy - 12;
+        CheckConditions.checkEnParameters0(bear);
+        bear.setEnergy(energy);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Погоня -12 энергии.");
+    }
+    private void denDiggingEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        energy = energy - 15;
+        CheckConditions.checkEnParameters0(bear);
+        bear.setEnergy(energy);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Рытьё берлоги -15 энергии.");
+    }
+
+    private void sleepEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        energy = energy + 40;
+        CheckConditions.checkEnParameters100(bear);
+        bear.setEnergy(energy);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Рытьё берлоги -15 энергии.");
     }
 
 
