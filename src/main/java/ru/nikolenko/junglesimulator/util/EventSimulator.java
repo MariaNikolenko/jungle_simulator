@@ -3,23 +3,56 @@ package ru.nikolenko.junglesimulator.util;
 import ru.nikolenko.junglesimulator.entity.Bear;
 import ru.nikolenko.junglesimulator.service.CheckConditions;
 
+import javax.management.MBeanRegistration;
+
 public class EventSimulator {
 
-    //Брождение по лесу -6 энергии
-    //Погоня -12 энергии
-    //Рытьё берлоги -15 энергии
-    //Сон +40 энергии
-    //Поиск ягод -7 энергии, k*5 здоровья
-    //Добыча мёда -14 энергии, k*10 здоровья
-    //Добыча рыбы -10 энергии, k*8 здоровья
-    //Охота на оленя -30 энергии, k*20 здоровья
-    //Попадание в капкан -50 здоровья
-    //Встреча с охотником -30 здоровья -30 энергии
+    //15% Брождение по лесу -6 энергии
+    //10% Погоня -12 энергии
+    //7% Рытьё берлоги -15 энергии
+    //15% Сон +40 энергии
+    //13% Поиск ягод -7 энергии, k*5 здоровья
+    //14% Добыча мёда -14 энергии, k*10 здоровья
+    //10% Добыча рыбы -10 энергии, k*8 здоровья
+    //6% Охота на оленя -30 энергии, k*20 здоровья
+    //4% Попадание в капкан -50 здоровья
+    //6% Встреча с охотником -30 здоровья -30 энергии
     //Энергия=0 → -6 здоровья
 
-    public void startSimulation (){
-
+    public void startSimulation(Bear bear) {
+        while (checkStatus(bear)) {
+            int eventNumber = (int) (Math.random() * 100);
+            if (eventNumber >= 0 && eventNumber < 15) {
+                walkingEvent(bear);
+            } else if (eventNumber >= 15 && eventNumber <25) {
+                chaseEvent(bear);
+            } else if (eventNumber >= 25 && eventNumber <32) {
+                denDiggingEvent(bear);
+            } else if (eventNumber >= 32 && eventNumber <47) {
+                sleepEvent(bear);
+            } else if (eventNumber >= 47 && eventNumber <60) {
+                searchBerriesEvent(bear);
+            } else if (eventNumber >= 60 && eventNumber <74) {
+                honeyExtractionEvent(bear);
+            } else if (eventNumber >= 74 && eventNumber <84) {
+                fishExtractionEvent(bear);
+            } else if (eventNumber >= 84 && eventNumber <90) {
+                DeerHuntingEvent(bear);
+            } else if (eventNumber >= 90 && eventNumber <94) {
+                gettingTrapEvent(bear);
+            } else if (eventNumber >= 94 && eventNumber <= 100) {
+                hunterAttackEvent(bear);
+            }
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        System.out.println("Медведь умер \u9760");
+        }
     }
+
 
     //Брождение по лесу -6 энергии
     private void walkingEvent (Bear bear) {
@@ -141,7 +174,7 @@ public class EventSimulator {
         System.out.println("!! Медведя атаковал охотник -30 энергии, -30 здоровья !!");
     }
 
-    //проверка уровня здоровья и энергии медведя
+    //Проверка уровня здоровья и энергии медведя
     private boolean checkStatus(Bear bear) {
         System.out.println("hp: " + bear.getHealth() + " energy: " + bear.getEnergy());
         if (bear.getHealth() <= 0) {
