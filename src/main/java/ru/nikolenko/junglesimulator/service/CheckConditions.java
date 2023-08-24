@@ -17,6 +17,20 @@ public class CheckConditions {
         }
     }
 
+    public static void checkHealthParameters100 (Bear bear) {
+        int health = bear.getHealth();
+        if (health > 100) {
+            health = 100;
+        }
+    }
+
+    public static void checkHealthParameters0 (Bear bear) {
+        int health = bear.getHealth();
+        if (health < 0) {
+            health = 0;
+        }
+    }
+
     public static void checkEnergy(Bear bear) {
         if (bear.getEnergy() <= 0) {
             int health = bear.getHealth();

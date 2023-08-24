@@ -129,6 +129,18 @@ public class EventSimulator {
     }
 
     //Встреча с охотником -30 здоровья -30 энергии
+    private void hunterAttackEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        int heals = bear.getHealth();
+        energy = energy - 30;
+        CheckConditions.checkEnParameters0(bear);
+        heals = heals -30;
+        CheckConditions.checkEnParameters0(bear);
+        bear.setEnergy(energy);
+        bear.setHealth(heals);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("!! Медведя атаковал охотник -30 энергии, -30 здоровья !!");
+    }
 
 
 
