@@ -77,8 +77,46 @@ public class EventSimulator {
     }
 
     //Добыча мёда -14 энергии, k*10 здоровья
+    private void honeyExtractionEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        int heals = bear.getHealth();
+        energy = energy - 14;
+        CheckConditions.checkEnParameters0(bear);
+        heals = heals + (int) (bear.getEnergyGenerationCoefficient()*10);
+        CheckConditions.checkEnParameters100(bear);
+        bear.setEnergy(energy);
+        bear.setHealth(heals);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Добыча мёда -14 энергии, + k*10 здоровья.");
+    }
+
     //Добыча рыбы -10 энергии, k*8 здоровья
+    private void fishExtractionEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        int heals = bear.getHealth();
+        energy = energy - 10;
+        CheckConditions.checkEnParameters0(bear);
+        heals = heals + (int) (bear.getEnergyGenerationCoefficient()*8);
+        CheckConditions.checkEnParameters100(bear);
+        bear.setEnergy(energy);
+        bear.setHealth(heals);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Добыча рыбы -10 энергии, + k*8 здоровья.");
+    }
+
     //Охота на оленя -30 энергии, k*20 здоровья
+    private void DeerHuntingEvent (Bear bear) {
+        int energy = bear.getEnergy();
+        int heals = bear.getHealth();
+        energy = energy - 30;
+        CheckConditions.checkEnParameters0(bear);
+        heals = heals + (int) (bear.getEnergyGenerationCoefficient()*20);
+        CheckConditions.checkEnParameters100(bear);
+        bear.setEnergy(energy);
+        bear.setHealth(heals);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("Охота на оленя -30 энергии, + k*20 здоровья.");
+    }
 
 
 
