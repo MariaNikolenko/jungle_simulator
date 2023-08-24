@@ -23,18 +23,13 @@ public class EventSimulator {
     private void walking (Bear bear) {
         int energy = bear.getEnergy();
         energy = energy - 6;
-        checkEnParameters100(bear);
+        CheckConditions.checkEnParameters0(bear);
         bear.setEnergy(energy);
+        CheckConditions.checkEnergy(bear);
         System.out.println("Брождение по лесу -6 энергии.");
-
     }
 
-    private void checkEnParameters100 (Bear bear) {
-        int energy = bear.getEnergy();
-        if (energy > 100) {
-            energy = 100;
-        }
-    }
+
 
 
 }
