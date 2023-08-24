@@ -118,6 +118,18 @@ public class EventSimulator {
         System.out.println("Охота на оленя -30 энергии, + k*20 здоровья.");
     }
 
+    //Попадание в капкан -50 здоровья
+    private void gettingTrapEvent (Bear bear) {
+        int heals = bear.getHealth();
+        heals = heals - 50;
+        CheckConditions.checkEnParameters0(bear);
+        bear.setHealth(heals);
+        CheckConditions.checkEnergy(bear);
+        System.out.println("!! Медведь попал в капкан -50 здоровья !!");
+    }
+
+    //Встреча с охотником -30 здоровья -30 энергии
+
 
 
 
